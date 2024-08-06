@@ -1,0 +1,22 @@
+package kr.or.ddit.vo;
+
+import lombok.Data;
+
+@Data
+public class CertificationVO {
+	//--증명서
+	private String cerNo;			// 증명서 번호
+	private String cerName;		// 증명서명
+	private String cerContent;		// 증명서내용
+	private String fileGroupNo;	// 파일그룹번호
+	private int cerCharge;			// 수수료금액
+	
+	//--증명서 발급
+	private String cerPriNo;		// 증명서 발급 번호
+	private String stuNo;			// 학번
+	private String cerPriDate;	// 발급일시
+	
+	
+	
+	
+}

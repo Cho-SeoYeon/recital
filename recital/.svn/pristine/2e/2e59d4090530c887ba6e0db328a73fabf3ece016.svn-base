@@ -1,0 +1,5 @@
+package kr.or.ddit.service.admin.inter;
+
+public interface IAdminCertificationService {
+
+}

@@ -1,0 +1,116 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+    <title>처리 현황 통계</title>
+    <style>
+        #statusChart, #typeChart {
+            width: 400px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        
+        .chartCard{
+        	height: 600px;
+        
+        } 
+        
+    </style>
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row mt-5">
+            <div class="col-xl-6">
+                <div class="card mb-4 bg-white chartCard">
+                    <h5 class="card-header">자격증별 신청 현황 통계</h5>
+                    <div class="card-body">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card mb-4 bg-white chartCard">
+                    <h5 class="card-header">자격증 신청 처리 현황 통계</h5>
+                    <div class="card-body">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <script>
+        $(document).ready(function() {
+     	    var approvedCount = ${approvedCount};        // 승인
+            var unApprovedCount = ${unApprovedCount};    // 미승인
+            var rejectedCount = ${rejectedCount};        // 반려
+
+            var toeicCount = ${toeicCount};      
+            var tofelCount = ${tofelCount};      
+            var hskCount = ${hskCount};      
+            var jlptCount = ${jlptCount};      
+
+
+            // 신청 자격증 종류 비율 조회 도넛 차트 생성
+            var ctx1 = $('#typeChart');
+            var typeChart = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['TOEIC', 'TOFEL', 'HSK', 'JLPT'],
+                    datasets: [{
+                        label: '신청 건수',
+                        data: [toeicCount, tofelCount, hskCount, jlptCount],
+                        backgroundColor: ['#F14525', '#F5EE59', '#45732F', '#4796C8']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            });
+            
+         // 처리 현황 도넛 차트 생성
+            var ctx2 = $('#statusChart');
+            var statusChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['미승인', '반려', '승인완료'],
+                    datasets: [{
+                        label: '처리 현황 건수',
+                        data: [unApprovedCount, rejectedCount, approvedCount],
+                        backgroundColor: ['#F14525', '#F5EE59', '#45732F']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            });
+            // 차트 클릭 이벤트
+            function handleChartClick() {
+               location.href = '/admin/licenseList'; 
+            }
+
+            ctx1.click(handleChartClick);
+            ctx2.click(handleChartClick);
+
+         
+        });
+    </script>

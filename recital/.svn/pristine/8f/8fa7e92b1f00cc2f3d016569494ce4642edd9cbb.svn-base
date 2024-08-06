@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+	<div class="row">
+		<div class="card mb-4 bg-white">
+			<h5 class="card-header">장학  > 장학금 신청</h5>
+			<hr class="my-0">
+			<div class="card-body">
+				<div class="table-responsive text-nowrap">
+					<form id="scholarshipForm" action="/student/insertScholarshipRequest" method="post">	
+					<sec:csrfInput/>
+						<div class="row mb-3">							
+							
+							<label class="col-sm-2 col-form-label" for="schName"><font size="4">장학금명</font></label>
+							<div class="col-sm-10">								
+								<input type="text" class="form-control" name="schName" id="schName">
+							</div>
+
+
+							<label class="col-sm-2 col-form-label" for="schAmount"><font size="4">년도</font></label>
+							<div class="col-sm-10">
+								<input type="date" class="form-control" name="schRegDate" id="schRegDate">
+							</div>
+							
+							<label class="col-sm-2 col-form-label" for="schType"><font size="4">장학 종류</font></label>
+							<div class="col-sm-10">
+								<select class="form-select" name="semester" id="semester">
+										<option value="1학기">1학기</option>
+										<option value="2학기">2학기</option>
+								</select>
+							</div>
+							
+							<label class="col-sm-2 col-form-label" for="schMax"><font size="4">최대 수혜 가능 인원</font></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="schMax" id="schMax">
+							</div>
+							
+						</div>
+						
+						<input type="button" id="insertBtn" value="등록" class="btn btn-primary">						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+		$('#insertBtn').click(function(){
+			if(confirm("//장학금을 신청하시겠습니까?")) {
+				$('#scholarshipForm').submit();
+			}
+		});
+	});
+</script>

@@ -1,0 +1,77 @@
+package kr.or.ddit.vo;
+
+import lombok.Data;
+
+@Data
+public class LectureVO {
+	private String lecNo;
+	private String proNo;
+	private String subNo;
+	private String facNo;
+	private String lecName;
+	private String lecExplain;
+	private int lecMax;
+	private int lecNow;
+	private String lecOnoff;
+	private int lecAge;
+	private int lecScore;
+	private String comDetLNo;
+	private String comDetCNo;
+	private String fileGroupNo;
+	private String year;
+	private String semester;
+	private int lecMidRate;
+	private int lecLastRate;
+	private int lecAssRate;
+	private int lecExamRate;
+	private int lecAdRate;
+	private int lecAtRate;
+<<<<<<< .mine
+	
+	// 교수
+	private String deptNo;
+	private String comDetPNo;
+	private String proName;
+	
+	// 과목
+	private String subName;
+
+	// 강의 시간표
+	private String comDetWNo;
+	private String comDetTNo;
+	
+	// 건물
+	private String buiNo;
+	private String buiName;
+	
+	// 시설
+	private String facName;
+||||||| .r423238
+=======
+	
+	private String[] lectureTimes;
+>>>>>>> .r423350
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

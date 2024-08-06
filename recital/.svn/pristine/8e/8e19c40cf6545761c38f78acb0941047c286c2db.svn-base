@@ -1,0 +1,16 @@
+package kr.or.ddit.service.admin.inter;
+
+import java.util.List;
+
+import kr.or.ddit.vo.LicenseVO;
+import kr.or.ddit.vo.PaginationInfoVO;
+
+public interface IAdminLicenseService {
+
+	// 페이징 처리를 위한 자격증 신청 내역 카운트
+	public int selectLicenseRequestCount(PaginationInfoVO<LicenseVO> pagingVO);
+
+	// 페이징 처리된 자격증 신청 내역 조회
+	public List<LicenseVO> selectLicenseRequestList(PaginationInfoVO<LicenseVO> pagingVO);
+
+}

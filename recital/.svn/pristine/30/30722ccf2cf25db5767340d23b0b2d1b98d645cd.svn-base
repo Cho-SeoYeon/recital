@@ -1,0 +1,33 @@
+package kr.or.ddit.controller.admin;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.ddit.service.admin.inter.IAdminCertificationService;
+import lombok.extern.slf4j.Slf4j;
+
+// 관리자 - 증명서 발급 관리
+@Controller
+@Slf4j
+@RequestMapping("/admin")
+public class AdminCertificationController {
+	
+	@Inject
+	private IAdminCertificationService certificationService;
+	// 증명서 종류 출력
+
+	
+	
+	@RequestMapping
+	public String certificationList() {
+		return "";
+	}
+	
+	
+	
+	
+	
+	
+}
